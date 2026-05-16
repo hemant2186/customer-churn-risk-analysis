@@ -1,0 +1,120 @@
+{
+  "dataset_rows": 7043,
+  "dataset_columns": 21,
+  "target_rate": 0.2654,
+  "selected_model": "logistic_regression",
+  "models": {
+    "logistic_regression": {
+      "model": "logistic_regression",
+      "threshold": 0.31,
+      "accuracy": 0.6593,
+      "precision": 0.4336,
+      "recall": 0.9251,
+      "roc_auc": 0.8413,
+      "confusion_matrix": [
+        [
+          583,
+          452
+        ],
+        [
+          28,
+          346
+        ]
+      ],
+      "classification_report": {
+        "0": {
+          "precision": 0.9541734860883797,
+          "recall": 0.5632850241545894,
+          "f1-score": 0.7083839611178615,
+          "support": 1035.0
+        },
+        "1": {
+          "precision": 0.43358395989974935,
+          "recall": 0.9251336898395722,
+          "f1-score": 0.590443686006826,
+          "support": 374.0
+        },
+        "accuracy": 0.6593328601845281,
+        "macro avg": {
+          "precision": 0.6938787229940645,
+          "recall": 0.7442093569970808,
+          "f1-score": 0.6494138235623437,
+          "support": 1409.0
+        },
+        "weighted avg": {
+          "precision": 0.8159900348502338,
+          "recall": 0.6593328601845281,
+          "f1-score": 0.6770783096689422,
+          "support": 1409.0
+        }
+      },
+      "roi": {
+        "threshold": 0.31,
+        "contacted_customers": 798,
+        "true_positives": 346,
+        "false_positives": 452,
+        "false_negatives": 28,
+        "estimated_saved_value": 46710.0,
+        "campaign_cost": 35910.0,
+        "missed_churn_cost": 5040.0,
+        "net_value": 5760.0
+      }
+    },
+    "random_forest": {
+      "model": "random_forest",
+      "threshold": 0.3,
+      "accuracy": 0.6757,
+      "precision": 0.445,
+      "recall": 0.8984,
+      "roc_auc": 0.8421,
+      "confusion_matrix": [
+        [
+          616,
+          419
+        ],
+        [
+          38,
+          336
+        ]
+      ],
+      "classification_report": {
+        "0": {
+          "precision": 0.9418960244648318,
+          "recall": 0.5951690821256038,
+          "f1-score": 0.7294256956779159,
+          "support": 1035.0
+        },
+        "1": {
+          "precision": 0.44503311258278144,
+          "recall": 0.8983957219251337,
+          "f1-score": 0.5952170062001771,
+          "support": 374.0
+        },
+        "accuracy": 0.6756564939673527,
+        "macro avg": {
+          "precision": 0.6934645685238066,
+          "recall": 0.7467824020253688,
+          "f1-score": 0.6623213509390465,
+          "support": 1409.0
+        },
+        "weighted avg": {
+          "precision": 0.8100104822051534,
+          "recall": 0.6756564939673527,
+          "f1-score": 0.6938018135880123,
+          "support": 1409.0
+        }
+      },
+      "roi": {
+        "threshold": 0.3,
+        "contacted_customers": 755,
+        "true_positives": 336,
+        "false_positives": 419,
+        "false_negatives": 38,
+        "estimated_saved_value": 45360.0,
+        "campaign_cost": 33975.0,
+        "missed_churn_cost": 6840.0,
+        "net_value": 4545.0
+      }
+    }
+  }
+}
