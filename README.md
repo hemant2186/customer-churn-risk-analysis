@@ -4,7 +4,12 @@ Live App: https://customer-churn-strategy.streamlit.app/
 
 An end-to-end machine learning case study that predicts telecom customer churn and translates model scores into retention decisions. The project focuses on practical business tradeoffs: catching likely churners, choosing an operating threshold, and estimating campaign value.
 
+**Live App:** Add your deployed Streamlit URL here  
+**Demo:** Interactive scoring, batch prediction, local explanations, and drift monitoring
+
 ![Streamlit app preview](assets/streamlit_app.png)
+
+![Demo walkthrough](assets/demo_walkthrough.gif)
 
 ## Why this project matters
 
@@ -17,7 +22,7 @@ Churn prediction is useful only when it supports an action. This project treats 
 - Built a reproducible sklearn pipeline for imputation, scaling, one-hot encoding, and classification.
 - Compared balanced Logistic Regression and Random Forest models.
 - Tuned the prediction threshold using a simple retention ROI simulation.
-- Packaged the final model in a Streamlit app for interactive churn scoring.
+- Packaged the final model in a Streamlit app for interactive churn scoring, batch prediction, local explanations, and data drift checks.
 
 ## Repository structure
 
@@ -34,8 +39,18 @@ Churn prediction is useful only when it supports an action. This project treats 
 │   └── customer_churn_case_study.ipynb
 ├── reports/
 │   └── model_metrics.json
+├── sample_batch_input.csv
 ├── scripts/
 │   └── train_model.py
+├── src/
+│   ├── business.py
+│   ├── config.py
+│   ├── data.py
+│   ├── features.py
+│   ├── inference.py
+│   └── monitoring.py
+├── tests/
+│   └── test_pipeline.py
 ├── README.md
 └── requirements.txt
 ```
@@ -50,6 +65,8 @@ The training script uses:
 - Stratified train-test split to preserve the churn rate.
 - Class-balanced models to improve recall on churned customers.
 - A threshold search that selects the operating point with the best estimated retention value.
+- Local linear contribution explanations for individual predictions.
+- Feature drift checks for uploaded batch data against the training baseline.
 
 ## Current validation results
 
@@ -88,6 +105,18 @@ Launch the app:
 streamlit run app.py
 ```
 
+Run tests:
+
+```bash
+pytest -q
+```
+
+Try batch scoring with:
+
+```text
+sample_batch_input.csv
+```
+
 ## Deploy on Streamlit Community Cloud
 
 1. Push this folder to a public GitHub repository.
@@ -102,8 +131,11 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for the exact Git commands and settings.
 
 Built an end-to-end customer churn prediction system using Python, pandas, and scikit-learn; cleaned telecom subscription data, trained cost-sensitive models, optimized a retention threshold using ROI assumptions, and deployed an interactive Streamlit app for real-time risk scoring.
 
-## Next improvements
+## Portfolio talking points
 
-- Add SHAP explanations for individual predictions.
-- Add a model card with bias, limitations, and monitoring notes.
-- Deploy the app publicly with Streamlit Community Cloud.
+- Prevented leakage by excluding `customerID` from training.
+- Used recall and ROI thresholding instead of optimizing accuracy alone.
+- Added batch scoring so business users can upload customer lists.
+- Added local explanations so predictions are interpretable.
+- Added a drift-monitoring view to show production ML awareness.
+- Added tests for inference, explanations, and monitoring output.

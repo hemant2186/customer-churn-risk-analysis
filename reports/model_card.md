@@ -16,6 +16,7 @@ This model estimates churn risk for telecom customers and supports retention pri
 - Selected model: balanced Logistic Regression
 - Preprocessing: numeric imputation, scaling, categorical imputation, one-hot encoding
 - Operating threshold: 31%, selected by retention ROI simulation
+- App features: single scoring, batch scoring, local linear explanations, and drift monitoring
 
 ## Validation metrics
 
@@ -30,3 +31,4 @@ This model estimates churn risk for telecom customers and supports retention pri
 - The dataset is static and may not represent current telecom behavior.
 - ROI assumptions are illustrative and should be replaced with real business economics.
 - The model should be monitored for data drift before production use.
+- Local explanations are based on linear-model contribution analysis and should be used as directional evidence, not causal proof.

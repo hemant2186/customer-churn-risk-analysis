@@ -37,6 +37,13 @@ git push -u origin main
 
 The app should build from `requirements.txt` and load the saved model from `models/churn_pipeline.joblib`.
 
+After deployment, test these app tabs:
+
+- **Single Prediction:** change a customer profile and confirm probability changes.
+- **Batch Prediction:** upload `sample_batch_input.csv` and download scored results.
+- **Monitoring:** upload the same sample file and confirm drift checks render.
+- **Model Details:** confirm validation metrics are visible.
+
 ## 3. Add the link to your resume
 
 Use a short project line like:
