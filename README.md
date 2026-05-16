@@ -1,5 +1,7 @@
 # Customer Churn Prediction and Retention Strategy
 
+Live App: https://customer-churn-strategy.streamlit.app/
+
 An end-to-end machine learning case study that predicts telecom customer churn and translates model scores into retention decisions. The project focuses on practical business tradeoffs: catching likely churners, choosing an operating threshold, and estimating campaign value.
 
 ![Streamlit app preview](assets/streamlit_app.png)
