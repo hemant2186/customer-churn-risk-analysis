@@ -20,5 +20,9 @@ Thumbs.db
 # Logs
 *.log
 
+# Local SaaS demo database
+*.sqlite3
+*.sqlite3-journal
+
 # Optional: large raw data (keep processed if needed)
 # data/raw/
