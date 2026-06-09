@@ -280,15 +280,44 @@ def show_batch_scoring(artifact: dict, workspace: dict) -> None:
 def show_monitoring(artifact: dict) -> None:
     st.subheader("Data Drift Check")
     st.write("Upload a customer CSV to compare its feature profile with the training baseline.")
-    upload = st.file_uploader("Upload monitoring CSV", type=["csv"], key="monitoring_upload")
+
+    upload = st.file_uploader(
+        "Upload monitoring CSV",
+        type=["csv"],
+        key="monitoring_upload",
+    )
 
     if upload is None:
-        st.info("Use the sample CSV from the Batch Prediction tab to test this monitoring view.")
+        st.info(
+            "Use the sample CSV from the Batch Prediction tab to test this monitoring view."
+        )
         return
 
     uploaded_df = pd.read_csv(upload)
-    drift = compare_to_training_profile(uploaded_df, artifact["training_profile"])
+
+    # Validate schema
+    missing_cols = set(MODEL_FEATURES) - set(uploaded_df.columns)
+
+    if missing_cols:
+        st.error(
+            f"Uploaded file is missing {len(missing_cols)} required model columns."
+        )
+
+        st.write("Missing columns:")
+        st.code("\n".join(sorted(missing_cols)))
+
+        st.info(
+            "Upload a churn dataset or the sample CSV from the Batch Prediction tab."
+        )
+        return
+
+    drift = compare_to_training_profile(
+        uploaded_df,
+        artifact["training_profile"],
+    )
+
     review_count = int((drift["Status"] == "Review").sum())
+
     st.metric("Features flagged for review", review_count)
     st.dataframe(drift, use_container_width=True, hide_index=True)
 
