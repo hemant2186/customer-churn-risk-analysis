@@ -57,6 +57,7 @@ On GitHub, add the deployed Streamlit URL to the repository website field so rec
 ## Troubleshooting
 
 - If the app cannot load the model, confirm `models/churn_pipeline.joblib` was committed.
+- If Streamlit shows `ModuleNotFoundError: No module named 'joblib'`, confirm `requirements.txt` is in the repository root and includes `joblib>=1.4,<2`, then reboot the app from Streamlit Cloud so dependencies are reinstalled.
 - If the app cannot install dependencies, confirm `requirements.txt` is in the repository root.
 - If Streamlit asks for the entrypoint file, use `app.py`.
 - If the deployed app is outdated, reboot it from the Streamlit app settings after pushing changes.
